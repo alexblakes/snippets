@@ -10,6 +10,6 @@ See the docs here: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame
 ## Dynamic column names when chaining `assign()`
 Use dictionary unpacking
 ```python
-column_name = my_column
+column_name = "my_column"
 df = df.assign(**{column_name: df['A'] + df['B']})
 ```
