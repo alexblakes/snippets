@@ -13,3 +13,7 @@ I'm not clear whether this is a bug.
 When VCFs are merged with `bcftools merge`, alleles at overlapping positions are merged into multiallelic sites.
 
 Use the `--merge none` flag to prevent this behaviour.
+
+## bcftools +fill-tags
+
+The fill-tags plugin will throw an error if the `--sample-file` (`-S`) contains duplicates.
