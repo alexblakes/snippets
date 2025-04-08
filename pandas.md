@@ -13,3 +13,12 @@ Use dictionary unpacking
 column_name = "my_column"
 df = df.assign(**{column_name: df['A'] + df['B']})
 ```
+
+## Flatten heirarchical columns
+```python
+def flatten_columns(df):
+    df.columns = ["_".join(str(x) for x in tuple) for tuple in df.columns.to_flat_index()]
+    return df
+
+df.pipe(flatten_columns)
+```
