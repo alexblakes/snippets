@@ -202,9 +202,6 @@ Here is the complete job script.
 
 set -euo pipefail # Bash "safe mode"
 
-split_file_paths=$1 # set -u will catch if $1 is missing
-
-
 function filterWithBcftools(){
     local file_in=$1 # The VCF to filter, declared as a local variable
 
@@ -218,6 +215,8 @@ function filterWithBcftools(){
 }
 
 export -f filterWithBcftools
+
+split_file_paths=$1 # set -u will catch if $1 is missing
 
 
 # One-liner to find the specific "split file" processed by this job.
