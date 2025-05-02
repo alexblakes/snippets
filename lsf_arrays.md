@@ -204,9 +204,6 @@ set -euo pipefail # Bash "safe mode"
 
 split_file_paths=$1 # set -u will catch if $1 is missing
 
-# One-liner to find the specific "split file" processed by this job.
-# Recall that each "split file" contains 50 VCF paths - one per line.
-target_file=$(< $split_file_paths awk -v ix="$LSB_JOBINDEX" 'NR==ix {print $0}')
 
 function filterWithBcftools(){
     local file_in=$1 # The VCF to filter, declared as a local variable
@@ -221,6 +218,11 @@ function filterWithBcftools(){
 }
 
 export -f filterWithBcftools
+
+
+# One-liner to find the specific "split file" processed by this job.
+# Recall that each "split file" contains 50 VCF paths - one per line.
+target_file=$(< $split_file_paths awk -v ix="$LSB_JOBINDEX" 'NR==ix {print $0}')
 
 parallel --arg-file $target_file --jobs 80% filterWithBcftools {}
 ```
