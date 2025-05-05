@@ -34,7 +34,7 @@ set -euo pipefail
 Next we set some constants which are used throughout the script.
 ```bash
 DIR_VCFS="/path/to/vcf/parent/directory"
-DIR_TMP="/path/to/tmp/dir" # Usually in scratch. THIS DIR GETS WIPED. DO NOT USE $pwd
+DIR_TMP="/path/to/tmp/dir" # Usually in scratch. THIS DIR GETS WIPED. DO NOT USE $PWD
 FILE_SPLIT_FILE_PATHS="${DIR_TMP}/split_file_paths.txt" # For example
 N=50 # Number of files processed per job
 ```
@@ -101,7 +101,7 @@ And here is the complete submission script:
 set -euo pipefail # Bash "safe mode"
 
 DIR_VCFS="/path/to/vcf/parent/directory"
-DIR_TMP="/path/to/tmp/dir" # Usually in scratch. THIS DIR GETS WIPED. DO NOT USE $pwd
+DIR_TMP="/path/to/tmp/dir" # Usually in scratch. THIS DIR GETS WIPED. DO NOT USE $PWD
 FILE_SPLIT_FILE_PATHS="${DIR_TMP}/split_file_paths.txt" # For example
 N=50 # Number of files processed per job
 
