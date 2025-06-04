@@ -28,4 +28,4 @@ The `bcftools -R` / `--regions-file` option does the same thing, but uses the VC
 
 In samtools it looks as though the `-L` / `--targets-file` and the `--regions-file` behave similarly to bcftools. It also has an optional region argument to be specified on the command line. I found the documentation for these was much more opaque.
 
-A bit of trial and error meant a massive speed up using samtools view --regions-file example.bed example.bam chr1 for one particular use case.
+A bit of trial and error meant a massive speed up using `samtools view --regions-file example.bed example.bam chr1` for one particular use case.
