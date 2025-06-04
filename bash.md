@@ -45,6 +45,10 @@ Keep only filenames with find
 find <dir> -printf "%f\n"
 ```
 
+Remove blank lines
+
+`awk 'NF'`
+
 ## Gotchas
 
 ### Grouping commands
