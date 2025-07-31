@@ -66,3 +66,31 @@ Get variables from a text file, based on the job index.
 ```bash
 my_var=$(awk -v ix="${LSB_JOBINDEX}" 'NR==ix {print$0}')
 ```
+
+## Conda
+GEL .condarc file
+```bash
+# .condarc file
+# This file is stored at /re_gecip/enhanced_interpretation/AlexBlakes/.condarc
+# The .condarc files in the GERE Desktop and GERE HPC are softlinks to this file.
+
+channel_alias: https://artifactory.aws.gel.ac:443/artifactory/
+channels:
+  - conda-conda-forge
+  - conda-bioconda
+  - conda-main
+  - conda-r
+channel_priority: strict
+ssl_verify: false
+solver: libmamba
+always_yes: true
+
+# Environments and packages are stored in a directory
+# which is accessible to both the GERE Desktop and HPC.
+# Note that 'envs' are 'pkgs' directories may nevertheless
+# reappear in ~/.conda/, even when they are not used. 
+envs_dirs:
+  - /re_gecip/enhanced_interpretation/AlexBlakes/.conda/envs
+pkgs_dirs:
+  - /re_gecip/enhanced_interpretation/AlexBlakes/.conda/pkgs
+```
