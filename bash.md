@@ -47,7 +47,25 @@ find <dir> -printf "%f\n"
 
 Remove blank lines
 
-`awk 'NF'`
+```
+awk 'NF'
+```
+
+Find files last modified more than 60 minutes ago
+
+```
+find <PATH> -mmin +60
+```
+
+From the `find` documentation (`man find`):
+
+```
+A numeric argument n can be specified to tests (like -amin, -mtime,  -gid,  -inum,
+-links,  -size,  -uid  and -used) as
+	+n     for greater than n,
+	-n     for less than n,
+	 n     for exactly n.
+```
 
 ## Gotchas
 
