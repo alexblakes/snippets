@@ -67,6 +67,25 @@ Get variables from a text file, based on the job index.
 my_var=$(awk -v ix="${LSB_JOBINDEX}" 'NR==ix {print$0}')
 ```
 
+## Rerun a failed job within an array (credit @Antony McGuigan)
+`brestart` does not seem to work on the LSF in the GERE. 
+
+If a job script uses `$LSB_JOBINDEX`, one can instead submit a new array job using only this index.
+
+For example, consider an array job with 96 jobs. All the jobs complete successfully, except for job #74. Job #74 can be resubmitted with the following command:
+
+```bash
+bsub \
+  -P <my_project_code> \
+  -q <my_queue> \
+  -M <mem_allocation> \
+  -R <resource_allocation> \
+  -J my_job[74]
+```
+
+It is probably sensible to supply the job index as a command line argument.
+
+
 ## Conda
 GEL .condarc file
 ```bash
