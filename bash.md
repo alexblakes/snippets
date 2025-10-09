@@ -9,8 +9,8 @@ Logging in a pipe
 function _log() {
 	local program=${0##*/}
 	local now=$(date -Ins)
-	echo -e "[${now}] (${program}) $@" >&2
-}
+	echo -e "[${now}] (${program}) $@"
+} >&2
 
 # Upstream pipe ...
 | tee >(_log "<message>" $(<command>)) \
@@ -118,3 +118,7 @@ VAR=(( 4 + 3)) # Syntax error
 # And fails when assigning a variable to 0.
 (( VAR = 2 - 2 )); echo $VAR # Fails with message: 'attemped assignment to non-variable'
 ```
+
+### Redirection
+>&2	Redirects stdout to the same place as sterr
+&>2	Redirects stdout and stderr to a file named `2`
