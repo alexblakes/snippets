@@ -6,15 +6,14 @@ See the [bash cheatsheet gist](https://gist.github.com/LeCoupa/122b12050f5fb267e
 Logging in a pipe
 
 ```bash
-export LOGFILE=log.txt
-
-pipelog() {
-	# Timestamp a message. Send it to $LOGFILE and stderr.
-	echo -e $(date +"%y-%m-%dT%T") "${@}" "\n" | tee -a $LOGFILE >&2
+function _log() {
+	local program=${0##*/}
+	local now=$(date -Ins)
+	echo -e "[${now}] (${program}) $@" >&2
 }
 
 # Upstream pipe ...
-| tee >(pipelog "<message>" $(<command>)) \
+| tee >(_log "<message>" $(<command>)) \
 # ... downstream pipe
 ```
 
