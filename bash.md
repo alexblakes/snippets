@@ -120,5 +120,5 @@ VAR=(( 4 + 3)) # Syntax error
 ```
 
 ### Redirection
->&2	Redirects stdout to the same place as sterr
-&>2	Redirects stdout and stderr to a file named `2`
+`>&2` Redirects stdout to the same place as sterr  
+`&>2` Redirects stdout and stderr to a file named `2`
