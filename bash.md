@@ -8,7 +8,7 @@ Logging in a pipe
 ```bash
 function _log() {
 	local program=${0##*/}
-	local now=$(date -Ins)
+	local now=$(date +%Y-%m-%d %H:%M:%S.%3N)
 	< /dev/null # Ignore stdin
 	echo -e "[${now}] (${program}) $@"
 } >&2
