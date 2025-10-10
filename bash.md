@@ -14,7 +14,8 @@ function _log() {
 } >&2
 
 # Upstream pipe ...
-| tee >(_log "<message>" $(<command>)) \
+# Quote "$(<command>)" for best effect
+| tee >(_log "<message>" "$(<command>)") \
 # ... downstream pipe
 ```
 
