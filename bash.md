@@ -9,6 +9,7 @@ Logging in a pipe
 function _log() {
 	local program=${0##*/}
 	local now=$(date -Ins)
+	< /dev/null # Ignore stdin
 	echo -e "[${now}] (${program}) $@"
 } >&2
 
