@@ -6,6 +6,7 @@ See the [bash cheatsheet gist](https://gist.github.com/LeCoupa/122b12050f5fb267e
 Logging in a pipe
 
 ```bash
+# Logging function
 function _log() {
 	local program
 	local now
@@ -17,7 +18,7 @@ function _log() {
 } >&2
 ```
 ```bash
-# Upstream pipe ...
+# Use in a pipe
 # Quote "$(<command>)" for best effect
 | tee >(_log "<message>" "$(<command>)") \
 # ... downstream pipe
