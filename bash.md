@@ -15,7 +15,8 @@ function _log() {
 	< /dev/null : # Ignore stdin
 	echo -e "[${now}] (${program})" "$@"
 } >&2
-
+```
+```bash
 # Upstream pipe ...
 # Quote "$(<command>)" for best effect
 | tee >(_log "<message>" "$(<command>)") \
