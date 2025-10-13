@@ -11,7 +11,7 @@ function _log() {
 	local program
 	local now
 	program=${0##*/}
-	now=$(date '+%Y-%m-%dT%H:%M:%S.%3N')
+	now=$(date '+%Y-%m-%d %H:%M:%S.%3N')
 
 	< /dev/null : # Ignore stdin
 	echo -e "[${now}] (${program})" "$@"
