@@ -13,7 +13,7 @@ function _log() {
 	now=$(date +%Y-%m-%d %H:%M:%S.%3N)
 
 	< /dev/null : # Ignore stdin
-	echo -e "[${now}] (${program}) $@"
+	echo -e "[${now}] (${program})" "$@"
 } >&2
 
 # Upstream pipe ...
