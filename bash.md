@@ -13,8 +13,8 @@ function _log() {
 	program=${0##*/}
 	now=$(date '+%Y-%m-%d %H:%M:%S.%3N')
 
-	< /dev/null : # Ignore stdin
 	echo -e "[${now}] (${program})" "$@"
+	cat > /dev/null # Absorb stdin. Prevents issues with back-to-back `tee`s
 } >&2
 ```
 ```bash
