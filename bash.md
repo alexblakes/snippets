@@ -14,7 +14,7 @@ function _log() {
 	now=$(date '+%Y-%m-%d %H:%M:%S.%3N')
 
 	echo -e "[${now}] (${program})" "$@"
-	cat > /dev/null # Absorb stdin. Prevents issues with back-to-back `tee`s
+	cat > /dev/null # Absorb stdin. Prevents issues with back-to-back `tee`s.
 } >&2
 ```
 ```bash
