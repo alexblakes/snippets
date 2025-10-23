@@ -9,8 +9,8 @@ Logging in a pipe
 # Logging function
 function _log() {
 	local program
-	local now
 	program=${0##*/}
+	local now
 	now=$(date '+%Y-%m-%d %H:%M:%S.%3N')
 
 	echo -e "[${now}] (${program})" "$@"
