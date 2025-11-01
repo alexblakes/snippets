@@ -44,9 +44,10 @@ The solution is to specify that pip installs packages to a specified target dire
 
 This can be done at the command line: `pip install --target <target_dir> <package>`.
 
-But it's probably more robust to save this in a config file. These can be listed as follows:
+But it's probably more robust to save this in a config file. Use the `pip config debug` command to show the location of the config files: 
+
 ```bash
-(ukb) [m40482ab@incline31 vis]$ pip config debug
+$ pip config debug
 
 env_var:
 env:
@@ -61,4 +62,15 @@ user:
   /mnt/iusers01/bk01/m40482ab/.config/pip/pip.conf, exists: False
 ```
 
-pip has "global", "user", and "site" config files.
+pip has "global", "user", and "site" config files. The "site" config file is specific to a virtual environment. To configure pip installs to a given conda environment, we should edit this file.
+
+```bash
+# pip config file in INI format
+
+[install]
+target = <target_dir> # Usually home/<user>/anaconda3/envs/<env>/lib/python<version>/site-packages/
+```
+
+The path to the `site-packages` directory for all packages can be found with `pip list -v`
+
+[See the docs](https://pip.pypa.io/en/stable/topics/configuration/) for more information on pip configuration.
