@@ -33,3 +33,32 @@ See these resources for more information on packaging python projects:
 - [This useful blog post and references on pyproject.toml files](https://www.scivision.dev/python-minimal-package/)
 - [Local project installs (pip docs)](https://pip.pypa.io/en/stable/topics/local-project-installs/)
 - [Editable installs (setuptools docs)](https://setuptools.pypa.io/en/latest/userguide/development_mode.html)
+
+## Installing local packages to conda environments with pip on the iCSF
+The above framework works nicely in GEL.
+On the UoM iCSF, it's a different story.
+
+No matter what I do, pip installs are not visible either to conda (`conda list <package>`) or to pip (`pip freeze | grep <package>`).
+
+The solution is to specify that pip installs packages to a specified target directory.
+
+This can be done at the command line: `pip install --target <target_dir> <package>`.
+
+But it's probably more robust to save this in a config file. These can be listed as follows:
+```bash
+(ukb) [m40482ab@incline31 vis]$ pip config debug
+
+env_var:
+env:
+global:
+  /etc/xdg/pip/pip.conf, exists: False
+  /etc/pip.conf, exists: False
+site:
+  /mnt/iusers01/bk01/m40482ab/miniconda3/envs/ukb/pip.conf, exists: True
+    install.target: /mnt/iusers01/bk01/m40482ab/miniconda3/envs/ukb/lib/python3.8/site-packages
+user:
+  /mnt/iusers01/bk01/m40482ab/.pip/pip.conf, exists: False
+  /mnt/iusers01/bk01/m40482ab/.config/pip/pip.conf, exists: False
+```
+
+pip has "global", "user", and "site" config files.
