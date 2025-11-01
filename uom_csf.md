@@ -1,6 +1,6 @@
 # UoM CSF
 
-## Installing Python packages to conda environments with pip.
+## Installing Python packages to conda environments with pip
 
 1. Activate a new (or existing) conda environment.
 2. Ensure that pip is installed into that environment (i.e. `conda install pip`).
