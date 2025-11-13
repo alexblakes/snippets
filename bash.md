@@ -20,10 +20,13 @@ function _log() {
 } >&2
 ```
 ```bash
-# Use in a pipe
+# Usage
+source path/to/script/containing/_log.sh
+
 # Quote "$(<command>)" for best effect
+# Upstream commands ...
 | tee >(_log "<message>" "$(<command>)") \
-# ... downstream pipe
+# ... downstream commands
 ```
 
 Timestamps
