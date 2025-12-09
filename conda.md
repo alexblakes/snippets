@@ -8,6 +8,7 @@ channels:
   - bioconda # conda-bioconda (GEL)
   - defaults # conda-main (GEL)
 dependencies:
+  - adjusttext
   - black
   - gtfparse
   - ipykernel
@@ -25,7 +26,7 @@ dependencies:
   - seaborn
   - setuptools
   - statannotations
+  - statsmodels
   - pip:
-    - adjusttext
     - pandas-checks
 ```
