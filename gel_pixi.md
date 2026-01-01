@@ -61,7 +61,7 @@ A recommended mapping is available [here](https://github.com/prefix-dev/parselmo
 Copy and paste this `compressed_mapping.json` into the pixi "home" directory, described above.
 
 ```json
-// compressed_mapping.json
+# compressed_mapping.json
 {"21cmfast": "21cmfast", "2dfatmic": null, "4ti2": null, ...}
 ```
 
