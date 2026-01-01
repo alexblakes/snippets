@@ -89,3 +89,14 @@ libc = { family = "glibc", version = "2.26" }
 ```
 
 Unfortuntaly, these settings cannot be configured in the global config at present. (See GitHub issues [#1795](https://github.com/prefix-dev/pixi/issues/1795) and [#3199](https://github.com/prefix-dev/pixi/issues/3199))
+
+## Running VS Code
+The GERE uses an old version of VS Code, with an out-of-date Python extension which doesn't recognise pixi virtual environments.
+
+To work around this, open a terminal in the GERE desktop, navigate to your pixi workspace, activate the pixi conda environment, and run:
+
+```bash
+pixi run code .
+```
+
+Ta-da!
