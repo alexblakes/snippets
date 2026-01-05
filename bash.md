@@ -32,6 +32,13 @@ source path/to/script/containing/_log.sh
 # ... downstream commands
 ```
 
+Prefix a TSV with column numbers
+```bash
+function col_number(){
+	awk 'NR==1 { for (i=1;i<=NF;i++) printf "%d%s", i, (i<NF?OFS:ORS) } 1'
+}
+```
+
 Timestamps
 
 ```bash
