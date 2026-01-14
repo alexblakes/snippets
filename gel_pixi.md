@@ -14,13 +14,13 @@ We want to access the same pixi configuration whether we run pixi from the GERE 
 
 To acheive this, the pixi configuration files need to be in a directory accessible to both filesystems. The `/re_gecip/` directories acheive this purpose. 
 
-The `pixi_HOME` environment variable can be set in your `~/.bash_profile`. 
+The `PIXI_HOME` environment variable can be set in your `~/.bash_profile`. 
 
 Due to idiosyncracies of the GERE / Amazon Workspaces this is actually better in `~/.bashrc`:
 
 ```bash
 # ~/.bashrc
-export pixi_HOME="/re_gecip/enhanced_interpretation/AlexBlakes/.pixi"
+export PIXI_HOME="/re_gecip/enhanced_interpretation/AlexBlakes/.pixi"
 ```
 
 **Optionally**, we can then create softlinks from here to our `HOME` directories:
@@ -35,7 +35,7 @@ pixi searches for global config settings in `~/.pixi/config.toml` by default.
 ## Global configuration (config.toml)
 The GERE is air-gapped. We need to specify mirrors for conda and an index-url for pypi.
 
-Add the following to the `config.toml` in the `pixi_HOME` directory, described above:
+Add the following to the `config.toml` in the `PIXI_HOME` directory, described above:
 
 ```toml
 # config.toml
