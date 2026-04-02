@@ -1,9 +1,17 @@
 # Using pixi in GERE
+This is [Pixi](https://github.com/prefix-dev/pixi/).
+Here's there [GitHub](https://pixi.prefix.dev/latest/).
+Using Pixi has greatly improved my GEL experience.
 
 ## Set pixi home directory
 We want to access the same pixi configuration whether we run pixi from the GERE desktop or from the HPC.
 
-To acheive this, the pixi configuration files need to be in a directory accessible to both filesystems. The `/re_gecip/` directories acheive this purpose. 
+To acheive this, the pixi configuration files need to be in a directory accessible to both filesystems. The `/re_gecip/` directories acheive this purpose.
+
+For example:
+```bash
+mkdir -p /re_gecip/enhanced_interpretation/AlexBlakes/.pixi
+```
 
 The `PIXI_HOME` environment variable can be set in your `~/.bash_profile`, or `~/.bashrc`. For example:
 
