@@ -1,29 +1,20 @@
 # Using pixi in GERE
 
-## Install pixi
-pixi is not currently available in the GERE. Ironically, we have to install pixi through conda.
-
-```bash
-conda create -n pixi pixi
-
-conda activate pixi
-```
-
 ## Set pixi home directory
-We want to access the same pixi configuration whether we run pixi from the GERE desktop or from the cluster.
+We want to access the same pixi configuration whether we run pixi from the GERE desktop or from the HPC.
 
 To acheive this, the pixi configuration files need to be in a directory accessible to both filesystems. The `/re_gecip/` directories acheive this purpose. 
 
-The `PIXI_HOME` environment variable can be set in your `~/.bash_profile`. 
-
-Due to idiosyncracies of the GERE / Amazon Workspaces this is actually better in `~/.bashrc`:
+The `PIXI_HOME` environment variable can be set in your `~/.bash_profile`, or `~/.bashrc`. For example:
 
 ```bash
 # ~/.bashrc
 export PIXI_HOME="/re_gecip/enhanced_interpretation/AlexBlakes/.pixi"
 ```
 
-**Optionally**, we can then create softlinks from here to our `HOME` directories:
+Run `bash` to restart your shell. Check that `$PIXI_HOME` has been set with `echo $PIXI_HOME`
+
+**Optionally**, we can then create softlinks from here to our `$HOME` directories:
 
 ```bash
 # Repeat this from both the GERE desktop and an interactive node
@@ -31,6 +22,32 @@ ln -s "/re_gecip/enhanced_interpretation/AlexBlakes/.pixi" ~/.pixi
 ```
 
 pixi searches for global config settings in `~/.pixi/config.toml` by default.
+
+## Install pixi
+pixi is not currently available in the GERE. 
+
+Copy the compressed archive to your home directory, then unpack it.
+
+```bash
+cp /re_gecip/machine_learning/CRDG_Shared/tools/pixi-x86_64-linux.tar.gz $PIXI_HOME
+cd $PIXI_HOME
+tar -xzf pixi-x86_64-linux.tar.gz
+```
+
+Alternatively, we can install pixi through conda.
+
+```bash
+conda create -n pixi pixi
+
+conda activate pixi
+```
+
+## Add binaries in $PIXI_HOME to your $PATH
+```
+# ~/.bashrc
+PATH="${PATH}:${PIXI_HOME}/bin"
+export PATH
+```
 
 ## Global configuration (config.toml)
 The GERE is air-gapped. We need to specify mirrors for conda and an index-url for pypi.
@@ -67,7 +84,20 @@ Copy and paste this `compressed_mapping.json` into the pixi "home" directory, de
 
 This mapping is referenced in the pixi manifest for each pixi directory, described below.
 
+## Global installs with pixi
+If you are just interested in having newer versions of tools available globally, try Pixi global installs. For example:
+```bash
+pixi global install bcftools
+bcftools --version
+```
+
+Never `module load bcftools` again!
+
 ## Customising the pixi manifest (pixi.toml)
+More idiomatic and reproducible use of Pixi involves setting up a virtual environment for each project / package.
+
+A little more setup is required.
+
 Configuration for each pixi project is set in `pixi.toml` in the root of that project.
 
 Start a new project with
@@ -88,7 +118,7 @@ conda-pypi-map = { conda-conda-forge = "/re_gecip/enhanced_interpretation/AlexBl
 libc = { family = "glibc", version = "2.26" }
 ```
 
-Unfortuntaly, these settings cannot be configured in the global config at present. (See GitHub issues [#1795](https://github.com/prefix-dev/pixi/issues/1795) and [#3199](https://github.com/prefix-dev/pixi/issues/3199))
+Unfortuntaly, these settings cannot be configured in the global config at present. (See GitHub issues [#1795](https://github.com/prefix-dev/pixi/issues/1795) and [#3199](https://github.com/prefix-dev/pixi/issues/3199)). So this needs to be repeated for each project.
 
 ## Running VS Code
 The GERE uses an old version of VS Code, with an out-of-date Python extension which doesn't recognise pixi virtual environments.
