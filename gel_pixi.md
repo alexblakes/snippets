@@ -1,6 +1,6 @@
 # Using pixi in GERE
 This is [Pixi](https://github.com/prefix-dev/pixi/).
-Here's there [GitHub](https://pixi.prefix.dev/latest/).
+Here's their [GitHub](https://pixi.prefix.dev/latest/).
 Using Pixi has greatly improved my GEL experience.
 
 ## Set pixi home directory
