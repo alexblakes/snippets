@@ -56,6 +56,11 @@ conda activate pixi
 PATH="${PATH}:${PIXI_HOME}/bin"
 export PATH
 ```
+Note that your GERE desktop and the HPC have different $HOME directories, each with it's own `.bashrc`. Changes you make in one aren't reflected in the other.
+
+You should make these changes separately in each `.bashrc` file.
+
+Alternatively, I keep a "central" `.bashrc` in my /re_gecip/ folder (`/re_gecip/enhanced_interpretation/AlexBlakes`). I have softlinks to this file in my Desktop and HPC `$HOME` directories. That way, I only have to change the central file, for the effects to be consistent in both contexts. We did the same thing for our `$PIXI_HOME` directory, above.
 
 ## Global configuration (config.toml)
 The GERE is air-gapped. We need to specify mirrors for conda and an index-url for pypi.
