@@ -63,7 +63,7 @@ The GERE is air-gapped. We need to specify mirrors for conda and an index-url fo
 Add the following to the `config.toml` in the `PIXI_HOME` directory, described above:
 
 ```toml
-# config.toml
+# ${PIXI_HOME}/config.toml
 
 # Global pixi configuration
 
