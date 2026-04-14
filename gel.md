@@ -113,3 +113,9 @@ envs_dirs:
 pkgs_dirs:
   - /re_gecip/enhanced_interpretation/AlexBlakes/.conda/pkgs
 ```
+
+## VSCode in GEL
+
+### VSCode remote development
+See [this answer](https://stackoverflow.com/a/56781109/22222426) on StackOverflow for setting up VSCode offline.
+See [this comment](https://github.com/microsoft/vscode/issues/208117#issuecomment-2101666424) on GitHub for server-side download link.
