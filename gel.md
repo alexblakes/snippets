@@ -121,3 +121,7 @@ See [this answer](https://stackoverflow.com/a/56781109/22222426) on StackOverflo
 See [this comment](https://github.com/microsoft/vscode/issues/208117#issuecomment-2101666424) on GitHub for server-side download link.
 
 Current GERE VSCode version server-side [download link](https://update.code.visualstudio.com/commit:41dd792b5e652393e7787322889ed5fdc58bd75b/server-linux-x64/stable) (v1.115.0 linux-64)
+
+Current GERE VSCode version CLI [download link](https://update.code.visualstudio.com/commit:41dd792b5e652393e7787322889ed5fdc58bd75b/cli-linux-x64/stable) (v1.115.0 linux-64)
+
+Current GERE VSCode version CLI [download link](https://update.code.visualstudio.com/commit:41dd792b5e652393e7787322889ed5fdc58bd75b/cli-alpine-x64/stable) (v1.115.0 alpine-64)
