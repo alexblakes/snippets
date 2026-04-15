@@ -119,6 +119,7 @@ pkgs_dirs:
 ### VSCode remote development
 See [this answer](https://stackoverflow.com/a/56781109/22222426) on StackOverflow for setting up VSCode offline.
 See [this comment](https://github.com/microsoft/vscode/issues/208117#issuecomment-2101666424) on GitHub for server-side download link.
+These are [the most up-to-date instructions](https://github.com/microsoft/vscode-remote-release/issues/9454#issuecomment-3393377532).
 
 Current GERE VSCode version server-side [download link](https://update.code.visualstudio.com/commit:41dd792b5e652393e7787322889ed5fdc58bd75b/server-linux-x64/stable) (v1.115.0 linux-64)
 
