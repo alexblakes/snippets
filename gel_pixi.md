@@ -50,6 +50,14 @@ conda create -n pixi pixi
 conda activate pixi
 ```
 
+Now add pixi to your path
+
+```bash
+#.bashrc
+PATH="${PIXI_HOME}/pixi:${PATH}"
+export PATH
+```
+
 ## Add binaries in $PIXI_HOME to your $PATH
 ```
 # ~/.bashrc
