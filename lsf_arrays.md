@@ -1,13 +1,10 @@
 # Idiomatic job arrays on the GEL HPC (LSF)
 
 ## Background
-I have previously found working with job arrays slightly tedious and intimidating.
-I felt that the setup was too involved, and the benefit wasn't worth it.
-As a work-around, I had been submitting a few larger jobs to the medium queue, which would complete within a day or so.
-However, doing more work with individual-level data across the cohort, I've put together a workflow involving job arrays which is quicker, neater and more reproducible.
-I hope it's useful to other GEL users.
+Working with genome-wide, individual level data can be time consuming on the LSF.
+Using LSF arrays and GNU parallel can make work quicker, neater and more reproducible.
 
-## Approach
+## Overview
 - Submit an array of, say, 500 jobs (parallelisation #1).
 - Within each job process, say, 50 files (parallelisation #2)
 
@@ -178,8 +175,8 @@ function filterWithBcftools(){
 }
 ```
 
-GNU parallel runs in a subshell.
-We therefore need to export the function so it is available to the subshells.
+GNU parallel tasks run in a subshell.
+We therefore need to export the function so it is available to those subshells.
 ```bash
 export -f filterWithBcftools
 ```
@@ -225,3 +222,6 @@ target_file=$(< $split_file_paths awk -v ix="$LSB_JOBINDEX" 'NR==ix {print $0}')
 
 parallel --arg-file $target_file --jobs 80% filterWithBcftools {}
 ```
+
+## Summary
+This setup may seem complex at first. The key message is to use GNU parallel for single-threaded tasks, like bcftools and bedtools operations. In combination with job arrays, you should be able to crunch through large individual-level queries in tens of minutes, not tens of days.
