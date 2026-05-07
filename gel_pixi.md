@@ -1,6 +1,6 @@
 # Using pixi in GERE
 This is [Pixi](https://github.com/prefix-dev/pixi/).
-Here's their [GitHub](https://pixi.prefix.dev/latest/).
+Here's their [docs](https://pixi.prefix.dev/latest/).
 Using Pixi has greatly improved my GEL experience. This guide describes the installation and setup of Pixi in the GERE.
 
 ## Table of contents
@@ -9,7 +9,7 @@ TBA
 ## Create a "home" for Pixi
 We want to access the same pixi configuration whether we run pixi from the GERE desktop or from the HPC.
 
-To acheive this, the pixi configuration files need to be in a directory accessible to both filesystems. The `/re_gecip/` directories acheive this purpose.
+To achieve this, the pixi configuration files need to be in a directory accessible to both filesystems. The `/re_gecip/` directories achieve this purpose.
 
 Make a directory called `.pixi` in your personal `/re_gecip/` directory. For example:
 ```bash
@@ -22,7 +22,6 @@ Now, make a soft link from this directory to your `$HOME` directory:
 ln -s "/re_gecip/enhanced_interpretation/<my_gel_username>/.pixi" ~/.pixi
 ```
 
-Repeat that command within an interactive session on the HPC - you want your Pixi install to be available both in the GERE desktop and the HPC.
 
 ## Install Pixi
 Pixi is not installed by default in the GERE. Here's how you get it.
@@ -89,9 +88,9 @@ Still missing? Double check your `.bashrc` for typos in the earlier configuratio
 
 
 > [!TIP]
-> Note that your GERE desktop and the HPC have different $HOME directories, each with it's own `.bashrc`. Changes you make in one aren't reflected in the other.
+> Note that your GERE desktop and the HPC have different $HOME directories, each with its own `.bashrc`. Changes you make in one aren't reflected in the other.
 > 
-> One work-around is to keep a "central" `.bashrc` in my /re_gecip/ folder (`/re_gecip/enhanced_interpretation/AlexBlakes`), and to have softlinks to this file (each named `.bashrc`) in the Desktop and HPC `$HOME` directories. That way, I only have to change the central file, for the effects to be consistent in both contexts. We did the same thing for our `$PIXI_HOME` directory, above.
+> One work-around is to keep a "central" `.bashrc` in your /re_gecip/ folder (`/re_gecip/enhanced_interpretation/AlexBlakes`), and to have softlinks to this file (each named `.bashrc`) in the Desktop and HPC `$HOME` directories. That way, you only have to change the central file for the effects to be consistent in both contexts. We did the same thing for our `$PIXI_HOME` directory, above.
 
 ## Installing with conda
 Alternatively, one can install pixi through conda... But it slightly defeats the point to have nested package managers...
@@ -132,14 +131,11 @@ A recommended mapping is available [here](https://github.com/prefix-dev/parselmo
 Copy and paste this `compressed_mapping.json` into the pixi "home" directory, described above.
 
 ```json
-# compressed_mapping.json
 {"21cmfast": "21cmfast", "2dfatmic": null, "4ti2": null, ...}
 ```
 
-This mapping is referenced in the pixi manifest for each pixi directory, described below.
-
 > [!TIP]
-You can instead provide an empty JSON file. It must be valid JSON, i.e. the content of the file would be a pair of braces only: `{}`. If this empty JSON is provided, Pixi will install packages from both PyPi and Conda, rather than from Conda alone.
+> You can instead provide an empty JSON file (`{}`). If this empty JSON is provided, Pixi will install packages from both PyPi and Conda, rather than from Conda alone.
 
 ## Global installs with pixi
 If you are just interested in having newer versions of tools available globally, try Pixi global installs. For example:
@@ -173,7 +169,7 @@ A new `pixi.toml` file is automatically added to the `<my_project>` directory. A
 [workspace] 
 # Append these lines to the `workspace` table
 # The conda-pypi mapping is provided for each channel.
-conda-pypi-map = { conda-conda-forge = "/re_gecip/enhanced_interpretation/AlexBlakes/.pixi/compressed_mapping.json", conda-bioconda = "/re_gecip/enhanced_interpretation/AlexBlakes/.pixi/compressed_mapping.json" }
+conda-pypi-map = { conda-conda-forge = "/re_gecip/enhanced_interpretation/<my_gel_username>/.pixi/compressed_mapping.json", conda-bioconda = "/re_gecip/enhanced_interpretation/<my_gel_username>/.pixi/compressed_mapping.json" }
 
 [system-requirements] # See https://pixi.prefix.dev/dev/workspace/system_requirements/
 # Obtained with `ldd --version`
@@ -181,7 +177,7 @@ libc = { family = "glibc", version = "2.26" }
 ```
 
 > [!WARNING]
-Unfortuntaly, these settings cannot be configured in the global config at present. (See GitHub issues [#1795](https://github.com/prefix-dev/pixi/issues/1795) and [#3199](https://github.com/prefix-dev/pixi/issues/3199)). So this needs to be repeated for each project.
+> Unfortunately, these settings cannot be configured in the global config at present. (See GitHub issues [#1795](https://github.com/prefix-dev/pixi/issues/1795) and [#3199](https://github.com/prefix-dev/pixi/issues/3199)). So this needs to be repeated for each project.
 
 Now try adding Python to your list of package requirements:
 ```bash
