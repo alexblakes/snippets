@@ -90,7 +90,7 @@ Still missing? Double check your `.bashrc` for typos in the earlier configuratio
 > [!TIP]
 > Note that your GERE desktop and the HPC have different $HOME directories, each with its own `.bashrc`. Changes you make in one aren't reflected in the other.
 > 
-> One work-around is to keep a "central" `.bashrc` in your /re_gecip/ folder (`/re_gecip/enhanced_interpretation/AlexBlakes`), and to have softlinks to this file (each named `.bashrc`) in the Desktop and HPC `$HOME` directories. That way, you only have to change the central file for the effects to be consistent in both contexts. We did the same thing for our `$PIXI_HOME` directory, above.
+> One work-around is to keep a "central" `.bashrc` in your /re_gecip/ folder (e.g. `/re_gecip/enhanced_interpretation/<your_gel_username>`), and to have softlinks to this file (each named `.bashrc`) in the Desktop and HPC `$HOME` directories. That way, you only have to change the central file for the effects to be consistent in both contexts. We did the same thing for our `$PIXI_HOME` directory, above.
 
 ## Installing with conda
 Alternatively, one can install pixi through conda... But it slightly defeats the point to have nested package managers...
