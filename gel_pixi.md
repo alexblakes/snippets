@@ -201,3 +201,34 @@ pixi run code .
 ```
 
 Ta-da!
+
+## Pixi in CloudOS
+The simplest thing is to install Pixi via conda.
+
+Your CloudOS workstation starts with a "baseline" conda environment already active.
+
+These shell commands should get you up and running:
+
+```bash
+# Install pixi
+conda install pixi -y
+
+# Update pixi global config, adding the bioconda channel
+mkdir -p "${HOME}/.pixi"
+printf 'default-channels = ["conda-forge", "bioconda"]\n' >> "${HOME}/.pixi/config.toml"
+
+# Install global packages with pixi - but they're not yet in your PATH
+pixi global install gh git starship nano ensembl-vep ripgrep
+
+# Add pixi global executables to PATH in .bashrc
+printf '\nPIXI_HOME="${HOME}/.pixi" \n' >> "${HOME}/.bashrc"
+printf 'export PIXI_HOME \n' >> "${HOME}/.bashrc"
+printf 'PATH="${PIXI_HOME}/bin:${PATH}" \n' >> "${HOME}/.bashrc"
+printf 'export PATH \n' >> "${HOME}/.bashrc"
+
+# Restart your shell
+bash
+
+# Test global package install and accessibility, for example:
+gh --version
+```
