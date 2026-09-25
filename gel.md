@@ -42,7 +42,7 @@ mkdir -p $TMPDIR
 LIST_FILE=${1:-}
 if [[ -n $LIST_FILE ]]; then
 	var=$(< $LIST_FILE awk -v ix="${LSB_JOBINDEX}" 'NR==ix')
-
+fi
 # My commands...
 ```
 
